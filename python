@@ -1,0 +1,27 @@
+class PlaylistOrganizer:
+    def __init__(self):
+        # Example structure: playlists = {"Chill": ["song1", "song2"], ...}
+        self.playlists = {}
+
+    def add_playlist(self, name):
+        if name in self.playlists:
+            print(f"Playlist '{name}' already exists.")
+        else:
+            self.playlists[name] = []
+            print(f"Created playlist '{name}'.")
+
+    def add_song(self, playlist_name, song):
+        if playlist_name not in self.playlists:
+            print(f"Playlist '{playlist_name}' does not exist.")
+            return
+        self.playlists[playlist_name].append(song)
+        print(f"Added '{song}' to '{playlist_name}'.")
+
+    def show_playlists(self):
+        if not self.playlists:
+            print("No playlists available.")
+            return
+        for name, songs in self.playlists.items():
+            print(f"Playlist: {name}")
+            for idx, song in enumerate(songs, 1):
+                print(f"  {idx}. {song}")
